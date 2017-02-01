@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Utilities
+import { capitalize } from '../../helpers'
+
 export class ItemForm extends React.Component {
   constructor() {
     super()
@@ -7,10 +10,6 @@ export class ItemForm extends React.Component {
     this.state = {
       item: {}
     }
-  }
-
-  capitalize = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1) + " "
   }
 
   onChange = (e) => {
@@ -31,7 +30,7 @@ export class ItemForm extends React.Component {
           this.props.itemFields.map(field =>
             <div key={`new-item-${field}`} className="form-group">
               <label htmlFor={`new-item-${field}`} className="col-sm-2 control-label">
-                {this.capitalize(field)}
+                {capitalize(field)}
               </label>
               <input
                 type="text"
@@ -62,7 +61,7 @@ export class ItemForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="col-md-6">
         <form>
           {this.inputs()}
           {this.button()}

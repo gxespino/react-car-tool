@@ -1,6 +1,7 @@
 import React from 'react'
 
 // Components
+import { Header } from 'components/shared/Header'
 import { Table } from 'components/shared/Table'
 import { ItemForm } from 'components/shared/ItemForm'
 
@@ -23,17 +24,18 @@ export class CarTool extends React.Component {
   render() {
     return (
       <div>
-        <h1>CAR TOOL</h1>
-
-        <Table
-          items={this.state.cars}
-          headers={this.state.carKeys}
-        />
-        <ItemForm
-          itemType="Car"
-          itemFields={this.state.carKeys}
-          saveItem={this.addCar}
-        />
+        <Header text="Car Tool" />
+        <div className="row">
+          <Table
+            items={this.state.cars}
+            headers={this.state.carKeys}
+          />
+          <ItemForm
+            itemType="Car"
+            itemFields={this.state.carKeys}
+            saveItem={this.addCar}
+          />
+        </div>
       </div>
     )
   }

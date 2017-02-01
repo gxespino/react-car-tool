@@ -3,6 +3,9 @@ import React from 'react'
 // Components
 import { TableRow } from './TableRow'
 
+// Utilities
+import { capitalize } from '../../helpers'
+
 export class Table extends React.Component {
   tableHeaders() {
     return (
@@ -11,7 +14,7 @@ export class Table extends React.Component {
           {
             this.props.headers.map(header =>
               <th key={header}>
-                <h3>{header}</h3>
+                <h4>{capitalize(header)}</h4>
               </th>
             )
           }
@@ -38,8 +41,8 @@ export class Table extends React.Component {
 
   render() {
     return (
-      <div>
-        <table>
+      <div className="col-md-6">
+        <table className="table table-striped">
           {this.tableHeaders()}
           {this.tableBody()}
         </table>
