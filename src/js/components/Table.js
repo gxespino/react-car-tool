@@ -1,20 +1,55 @@
 import React from 'react'
 
 export class Table extends React.Component {
-  itemsTable() {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      headers: Object.keys(this.props.items[0])
+    }
+  }
+
+  tableHeaders() {
     return (
-      this.props.items.map(item =>
-        <ul>
-          <li><h3>{item.make}</h3></li>
-        </ul>
-      )
+      <thead>
+        <tr>
+          {
+            this.state.headers.map(header =>
+              <th><h3>{header}</h3></th>
+            )
+          }
+        </tr>
+      </thead>
+    )
+  }
+
+  tableBody() {
+    return (
+      <tbody>
+        {
+          this.state.headers.map(header =>
+            {
+              this.props.items.map((item, header) =>
+                <tr>
+                  <td key={item}>
+                    {item['make']}
+                  </td>
+                </tr>
+              )
+            }
+          )
+        }
+      </tbody>
     )
   }
 
   render() {
     return (
       <div>
-        {this.itemsTable()}
+        <table>
+          {this.tableHeaders()}
+          {this.tableBody()}
+        </table>
       </div>
     )
   }
