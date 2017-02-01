@@ -1,20 +1,12 @@
 import React from 'react'
 
 export class Table extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      headers: Object.keys(this.props.items[0])
-    }
-  }
-
   tableHeaders() {
     return (
       <thead>
         <tr>
           {
-            this.state.headers.map(header =>
+            this.props.headers.map(header =>
               <th key={header}>
                 <h3>{header}</h3>
               </th>
@@ -32,7 +24,7 @@ export class Table extends React.Component {
           this.props.items.map(item =>
             <tr key={item.make}>
               {
-                this.state.headers.map(header =>
+                this.props.headers.map(header =>
                   <td key={`${item.make}-${header}`}>
                     {item[header]}
                   </td>

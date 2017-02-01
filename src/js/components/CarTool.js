@@ -1,7 +1,8 @@
 import React from 'react'
 
 // Components
-import { Table } from 'components/Table'
+import { Table } from 'components/shared/Table'
+import { ItemForm } from 'components/shared/ItemForm'
 
 export class CarTool extends React.Component {
   constructor(props) {
@@ -9,7 +10,14 @@ export class CarTool extends React.Component {
 
     this.state = {
       cars: this.props.cars.concat(),
+      carKeys: Object.keys(this.props.cars[0]),
     }
+  }
+
+  addCar = (car) => {
+    this.setState({
+      cars: this.state.cars.concat(car)
+    })
   }
 
   render() {
@@ -17,7 +25,15 @@ export class CarTool extends React.Component {
       <div>
         <h1>CAR TOOL</h1>
 
-        <Table items={this.state.cars} />
+        <Table
+          items={this.state.cars}
+          headers={this.state.carKeys}
+        />
+        <ItemForm
+          itemType="Car"
+          itemFields={this.state.carKeys}
+          saveItem={this.addCar}
+        />
       </div>
     )
   }
