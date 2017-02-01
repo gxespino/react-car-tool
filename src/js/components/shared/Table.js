@@ -7,7 +7,7 @@ import { TableRow } from './TableRow'
 import { capitalize } from '../../helpers'
 
 export class Table extends React.Component {
-  tableHeaders() {
+  tableHeaders = () => {
     return (
       <thead>
         <tr>
@@ -23,7 +23,7 @@ export class Table extends React.Component {
     )
   }
 
-  tableBody() {
+  tableBody = () => {
     return (
       <tbody>
         {
@@ -32,6 +32,8 @@ export class Table extends React.Component {
               key={item.make}
               item={item}
               headers={this.props.headers}
+              deleteItem={this.props.deleteItem}
+              updateItem={this.props.updateItem}
             />
           )
         }

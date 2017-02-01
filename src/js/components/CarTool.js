@@ -21,21 +21,33 @@ export class CarTool extends React.Component {
     })
   }
 
+  deleteCar = (car) => {
+    this.setState({
+      cars: this.state.cars.filter(aCar => aCar !== car)
+    })
+  }
+
+  updateCar = (oldCar, newCar) => {
+    this.setState({
+      cars: this.state.cars.filter(aCar => aCar !== oldCar).concat(newCar)
+    })
+  }
+
   render() {
     return (
       <div>
         <Header text="Car Tool" />
-        <div className="row">
-          <Table
-            items={this.state.cars}
-            headers={this.state.carKeys}
-          />
-          <ItemForm
-            itemType="Car"
-            itemFields={this.state.carKeys}
-            saveItem={this.addCar}
-          />
-        </div>
+        <Table
+          items={this.state.cars}
+          headers={this.state.carKeys}
+          deleteItem={this.deleteCar}
+          updateItem={this.updateCar}
+        />
+        <ItemForm
+          itemType="Car"
+          itemFields={this.state.carKeys}
+          saveItem={this.addCar}
+        />
       </div>
     )
   }
