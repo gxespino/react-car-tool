@@ -1,14 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-import 'bootstrap-loader';
-import '../css/styles.scss';
+// Components
+import { CarTool } from './components/CarTool'
 
-class HelloWorld extends React.Component {
+// CSS
+import Bootstrap from 'bootstrap-loader'
 
-    render() {
-        return <h1>Hello World!</h1>;
-    }
+// Data
+import SampleData from './data/sample'
+
+class App extends React.Component {
+  render() {
+    return (
+      <CarTool cars={this.props.cars}/>
+    )
+  }
 }
 
-ReactDOM.render( <HelloWorld /> , document.querySelector('main'));
+ReactDOM.render(
+  <App cars={SampleData.cars} />,
+  document.querySelector('main')
+);
