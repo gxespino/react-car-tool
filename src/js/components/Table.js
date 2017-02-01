@@ -15,7 +15,9 @@ export class Table extends React.Component {
         <tr>
           {
             this.state.headers.map(header =>
-              <th><h3>{header}</h3></th>
+              <th key={header}>
+                <h3>{header}</h3>
+              </th>
             )
           }
         </tr>
@@ -27,16 +29,16 @@ export class Table extends React.Component {
     return (
       <tbody>
         {
-          this.state.headers.map(header =>
-            {
-              this.props.items.map((item, header) =>
-                <tr>
-                  <td key={item}>
-                    {item['make']}
+          this.props.items.map(item =>
+            <tr key={item.make}>
+              {
+                this.state.headers.map(header =>
+                  <td key={`${item.make}-${header}`}>
+                    {item[header]}
                   </td>
-                </tr>
-              )
-            }
+                )
+              }
+            </tr>
           )
         }
       </tbody>
