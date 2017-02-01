@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Components
+import { TableRow } from './TableRow'
+
 export class Table extends React.Component {
   tableHeaders() {
     return (
@@ -22,15 +25,11 @@ export class Table extends React.Component {
       <tbody>
         {
           this.props.items.map(item =>
-            <tr key={item.make}>
-              {
-                this.props.headers.map(header =>
-                  <td key={`${item.make}-${header}`}>
-                    {item[header]}
-                  </td>
-                )
-              }
-            </tr>
+            <TableRow
+              key={item.make}
+              item={item}
+              headers={this.props.headers}
+            />
           )
         }
       </tbody>
