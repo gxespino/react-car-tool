@@ -10,7 +10,7 @@ export class CarTool extends React.Component {
     super(props)
 
     this.state = {
-      cars: this.props.cars.concat(),
+      cars: this.props.cars,
       carKeys: Object.keys(this.props.cars[0]),
     }
   }
@@ -29,7 +29,7 @@ export class CarTool extends React.Component {
 
   updateCar = (oldCar, newCar) => {
     this.setState({
-      cars: this.state.cars.filter(aCar => aCar !== oldCar).concat(newCar)
+      cars: this.state.cars.filter(car => car !== oldCar).concat(newCar)
     })
   }
 
